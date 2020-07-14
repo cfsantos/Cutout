@@ -1,15 +1,16 @@
 # Cutout
 
-This repository contains the code for the paper [MaxDropout: Deep Neural Network RegularizationBased on Maximum Output Values](https://arxiv.org/). 
+This repository contains the code for the paper [MaxDropout: Deep Neural Network RegularizationBased on Maximum Output Values](https://arxiv.org/).   
+
 Code based on the [Cutout original repository](https://github.com/uoguelph-mlrg/Cutout)
 
 ## Introduction
 
 MaxDropout is a regularization technique based on Dropout. While dropout removes random neurons from a given tensor, MaxDropout relies on the highest values of this tensor, changing the values according to this rule.  
   
-![Original Image](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png "Original Image")
-![Dropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png "Dropout")
-![MaxDropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png "MaxDropout")
+![Original Image](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png  "Original Image")<!-- .element height="50%" width="50%" -->
+![Dropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png "Dropout")<!-- .element height="50%" width="50%" -->
+![MaxDropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png "MaxDropout")<!-- .element height="50%" width="50%" -->
 
 
 Bibtex:  
@@ -36,6 +37,8 @@ Test error (%, flip/translation augmentation, mean/std normalization, mean of 5 
 | ResNet18 + cutout | 3.99   | 21.96         |
 | ResNet18 + MaxDropout | 4.66   | 21.93         |
 | ResNet18 + cutout + MaxDropout | **3.76**   | **21.82**         |  
+
+
 To train ResNet18 on CIFAR10 with data augmentation and MaxDropout:    
 `python train.py --dataset cifar10 --model resnet18 --data_augmentation --cutout --length 16`
 
