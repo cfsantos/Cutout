@@ -1,4 +1,4 @@
-# Cutout
+# MaxDropout
 
 This repository contains the code for the paper [MaxDropout: Deep Neural Network RegularizationBased on Maximum Output Values](https://arxiv.org/).   
 
