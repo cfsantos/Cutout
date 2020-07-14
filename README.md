@@ -10,8 +10,7 @@ MaxDropout is a regularization technique based on Dropout. While dropout removes
 
 | Original Image             |  Dropout(50%) |   MaxDropout(50%)   |
 :-------------------------:|:-------------------------:
-![](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png)  |  ![](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png) |  ![](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png)
-
+<img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png "> |  <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png"> |  <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png"> |
 <p align="left">
   <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png ">
   <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png">
