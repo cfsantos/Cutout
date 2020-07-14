@@ -7,11 +7,18 @@ Code based on the [Cutout original repository](https://github.com/uoguelph-mlrg/
 ## Introduction
 
 MaxDropout is a regularization technique based on Dropout. While dropout removes random neurons from a given tensor, MaxDropout relies on the highest values of this tensor, changing the values according to this rule.  
-  
-![Original Image](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png  "Original Image")<!-- .element height="50%" width="50%" -->
-![Dropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png "Dropout")<!-- .element height="50%" width="50%" -->
-![MaxDropout](https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png "MaxDropout")<!-- .element height="50%" width="50%" -->
 
+<p align="center">
+  <img width="460" height="300" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png ">
+</p>
+<p align="center">
+  <img width="460" height="300" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png">
+</p>
+<p align="center">
+  <img width="460" height="300" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png">
+</p>
+
+ 
 
 Bibtex:  
 ```
