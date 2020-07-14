@@ -1,6 +1,8 @@
 # run train.py --dataset cifar10 --model resnet18 --data_augmentation --cutout --length 16
 # run train.py --dataset cifar100 --model resnet18 --data_augmentation --cutout --length 8
 # run train.py --dataset svhn --model wideresnet --learning_rate 0.01 --epochs 160 --cutout --length 20
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 import pdb
 import argparse
@@ -48,6 +50,10 @@ parser.add_argument('--no-cuda', action='store_true', default=False,
                     help='enables CUDA training')
 parser.add_argument('--seed', type=int, default=0,
                     help='random seed (default: 1)')
+parser.add_argument('--run', type=int, default=0,
+                    help='running time (default: 0')
+parser.add_argument('--drop', type=float, default=0.3,
+                    help='drop rate on maxdropout (default: 0.3')
 
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
@@ -57,7 +63,7 @@ torch.manual_seed(args.seed)
 if args.cuda:
     torch.cuda.manual_seed(args.seed)
 
-test_id = args.dataset + '_' + args.model
+test_id = args.dataset + '_' + args.model +'_dataaug_'+str(args.data_augmentation) +'_'+str(args.run)+'_drop_'+str(args.drop)
 
 print(args)
 
@@ -142,14 +148,14 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
                                           num_workers=2)
 
 if args.model == 'resnet18':
-    cnn = ResNet18(num_classes=num_classes)
+    cnn = ResNet18(num_classes=num_classes, drop=args.drop)
 elif args.model == 'wideresnet':
     if args.dataset == 'svhn':
-        cnn = WideResNet(depth=16, num_classes=num_classes, widen_factor=8,
-                         dropRate=0.4)
+        cnn = WideResNet(depth=16, num_classes=num_classes, widen_factor=4,
+                         dropRate=args.drop)
     else:
         cnn = WideResNet(depth=28, num_classes=num_classes, widen_factor=10,
-                         dropRate=0.3)
+                         dropRate=args.drop)
 
 cnn = cnn.cuda()
 criterion = nn.CrossEntropyLoss().cuda()
@@ -198,7 +204,8 @@ for epoch in range(args.epochs):
         images = images.cuda()
         labels = labels.cuda()
 
-        cnn.zero_grad()
+        #cnn.zero_grad()
+        cnn_optimizer.zero_grad()
         pred = cnn(images)
 
         xentropy_loss = criterion(pred, labels)
@@ -215,10 +222,10 @@ for epoch in range(args.epochs):
 
         progress_bar.set_postfix(
             xentropy='%.3f' % (xentropy_loss_avg / (i + 1)),
-            acc='%.3f' % accuracy)
+            acc='%.5f' % accuracy)
 
     test_acc = test(test_loader)
-    tqdm.write('test_acc: %.3f' % (test_acc))
+    tqdm.write('test_acc: %.5f' % (test_acc))
 
     scheduler.step(epoch)  # Use this line for PyTorch <1.4
     # scheduler.step()     # Use this line for PyTorch >=1.4

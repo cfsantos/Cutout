@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from torch.autograd import Variable
-
+from model.MaxDropout import MaxDropout
 
 def conv3x3(in_planes, out_planes, stride=1):
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride, padding=1, bias=False)
@@ -64,10 +64,10 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, block, num_blocks, num_classes=10):
+    def __init__(self, block, num_blocks,drop=0.3, num_classes=10):
         super(ResNet, self).__init__()
         self.in_planes = 64
-
+        self.drop = drop
         self.conv1 = conv3x3(3,64)
         self.bn1 = nn.BatchNorm2d(64)
         self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
@@ -87,33 +87,21 @@ class ResNet(nn.Module):
     def forward(self, x):
         out = F.relu(self.bn1(self.conv1(x)))
         out = self.layer1(out)
+        out = MaxDropout(drop=self.drop).forward(out)
+
         out = self.layer2(out)
+        out = MaxDropout(drop=self.drop).forward(out)
+
         out = self.layer3(out)
+        out = MaxDropout(drop=self.drop).forward(out)
         out = self.layer4(out)
+        out = MaxDropout(drop=self.drop).forward(out)
         out = F.avg_pool2d(out, 4)
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
 
 
-def ResNet18(num_classes=10):
-    return ResNet(BasicBlock, [2,2,2,2], num_classes)
+def ResNet18(drop, num_classes=10):
+    return ResNet(BasicBlock, [2,2,2,2],drop, num_classes)
 
-def ResNet34(num_classes=10):
-    return ResNet(BasicBlock, [3,4,6,3], num_classes)
-
-def ResNet50(num_classes=10):
-    return ResNet(Bottleneck, [3,4,6,3], num_classes)
-
-def ResNet101(num_classes=10):
-    return ResNet(Bottleneck, [3,4,23,3], num_classes)
-
-def ResNet152(num_classes=10):
-    return ResNet(Bottleneck, [3,8,36,3], num_classes)
-
-def test_resnet():
-    net = ResNet50()
-    y = net(Variable(torch.randn(1,3,32,32)))
-    print(y.size())
-
-# test_resnet()

@@ -44,10 +44,10 @@ Test error (%, flip/translation augmentation, mean/std normalization, mean of 5 
 
 
 To train ResNet18 on CIFAR10 with data augmentation and MaxDropout:    
-`python train.py --dataset cifar10 --model resnet18 --data_augmentation --cutout --length 16`
+`python train.py --dataset cifar10 --model resnet18 --data_augmentation 
 
 To train ResNet18 on CIFAR100 with data augmentation and MaxDropout:  
-`python train.py --dataset cifar100 --model resnet18 --data_augmentation --cutout --length 8`
+`python train.py --dataset cifar100 --model resnet18 --data_augmentation 
 
 To train ResNet18 on CIFAR10 with data augmentation, cutout and MaxDropout:    
 `python train.py --dataset cifar10 --model resnet18 --data_augmentation --cutout --length 16`
@@ -66,10 +66,10 @@ Test error (%, flip/translation augmentation, mean/std normalization, mean of 5 
 | WideResNet + MaxDropout | **3.84** | **18.81**         |
 
 To train WideResNet 28-10 on CIFAR10 with data augmentation and MaxDropout:    
-`python train.py --dataset cifar10 --model wideresnet --data_augmentation --cutout --length 16`
+`python train.py --dataset cifar10 --model wideresnet --data_augmentation 
 
 To train WideResNet 28-10 on CIFAR100 with data augmentation and MaxDropout:  
-`python train.py --dataset cifar100 --model wideresnet --data_augmentation --cutout --length 8`
+`python train.py --dataset cifar100 --model wideresnet --data_augmentation 
 
 
 
