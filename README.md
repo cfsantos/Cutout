@@ -10,13 +10,10 @@ MaxDropout is a regularization technique based on Dropout. While dropout removes
 
 <p align="left">
   <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/original.png ">
-</p>
-<p align="center">
   <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/droped.png">
-</p>
-<p align="right">
   <img width="240" height="200" src="https://github.com/cfsantos/MaxDropout-torch/blob/master/images/maxdroped.png">
 </p>
+
 
  
 
