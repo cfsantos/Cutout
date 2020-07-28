@@ -16,11 +16,13 @@ MaxDropout is a regularization technique based on Dropout. While dropout removes
 
 Bibtex:  
 ```
-@misc{2007.13723,
-Author = {Claudio Filipi Goncalves do Santos and Danilo Colombo and Mateus Roder and João Paulo Papa},
-Title = {MaxDropout: Deep Neural Network Regularization Based on Maximum Output Values},
-Year = {2020},
-Eprint = {arXiv:2007.13723},
+@misc{santos2020maxdropout,
+    title={MaxDropout: Deep Neural Network Regularization Based on Maximum Output Values},
+    author={Claudio Filipi Goncalves do Santos and Danilo Colombo and Mateus Roder and João Paulo Papa},
+    year={2020},
+    eprint={2007.13723},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
 }
 ```
 
