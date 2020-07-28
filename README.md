@@ -1,6 +1,6 @@
 # MaxDropout
 
-This repository contains the code for the paper [MaxDropout: Deep Neural Network RegularizationBased on Maximum Output Values](https://arxiv.org/).   
+This repository contains the code for the paper [MaxDropout: Deep Neural Network RegularizationBased on Maximum Output Values](https://arxiv.org/abs/2007.13723).   
 
 Code based on the [Cutout original repository](https://github.com/uoguelph-mlrg/Cutout)
 
@@ -16,12 +16,7 @@ MaxDropout is a regularization technique based on Dropout. While dropout removes
 
 Bibtex:  
 ```
-@article{devries2017cutout,  
-  title={Improved Regularization of Convolutional Neural Networks with Cutout},  
-  author={DeVries, Terrance and Taylor, Graham W},  
-  journal={arXiv preprint arXiv:1708.04552},  
-  year={2017}  
-}
+@article{}
 ```
 
 ## Results and Usage   
